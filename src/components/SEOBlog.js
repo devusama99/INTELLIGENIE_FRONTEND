@@ -407,8 +407,8 @@ function SEOBlog() {
       </div>
       <PageFoot
         pageNo="5"
-        backLink="/seoAnalyzer"
-        nextLink="/plagiarismChecker"
+        backLink="/app/seoAnalyzer"
+        nextLink="/app/plagiarismChecker"
       />
     </>
   );

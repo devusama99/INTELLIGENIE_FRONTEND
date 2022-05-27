@@ -428,11 +428,7 @@ function SEOBlog() {
           </TabPanel>
         </div>
       </div>
-      <PageFoot
-        pageNo="5"
-        backLink="/seoAnalyzer"
-        nextLink="/plagiarismChecker"
-      />
+      <PageFoot pageNo="4" backLink="/app/aiBlog" nextLink="/app/seoBlog" />
     </>
   );
 }

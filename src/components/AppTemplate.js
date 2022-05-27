@@ -28,7 +28,7 @@ import {
   FiCode as HTMLCodeIcon,
   FiKey as KeywordsIcon,
 } from "react-icons/fi";
-import { MdLogout as SignoutIcon } from "react-icons/md";
+import { MdGrading, MdLogout as SignoutIcon, MdSegment } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { logout } from "./Helper/ClearLocalStorage";
 import { useHistory } from "react-router-dom";
@@ -236,88 +236,64 @@ function AppTemplate(props) {
           </ListItem>
         </Link>
 
-        <ListItem
-          button
-          className={
-            "/app/blogTitle" === location.pathname ||
-            "/app/blogOutline" === location.pathname
-              ? classes.listItemActive
-              : classes.listItem
-          }
-          onClick={() => {
-            handleClick();
-          }}
-        >
-          <BlogHelpIcon
-            style={{ fontSize: 20 }}
+        <Link to="/app/blogTitle" className={classes.link}>
+          <ListItem
+            onClick={handleDrawerToggle}
+            button
             className={
-              "/app/blogTitle" === location.pathname ||
-              "/app/blogOutline" === location.pathname
-                ? classes.navItemIconActive
-                : classes.navItemIcon
+              location.pathname === "/app/blogTitle"
+                ? classes.listItemActive
+                : classes.listItem
             }
-          />
-          <ListItemText
-            primary={"1-Blog Help"}
-            className={
-              "/app/blogTitle" === location.pathname ||
-              "/app/blogOutline" === location.pathname
-                ? classes.listItemTextActive
-                : classes.listItemText
-            }
-          />
-          {openDropdown ? (
-            <ExpandLess
+          >
+            <MdSegment
+              style={{ fontSize: 20 }}
               className={
-                "/app/blogTitle" === location.pathname ||
-                "/app/blogOutline" === location.pathname
+                location.pathname === "/app/blogTitle"
                   ? classes.navItemIconActive
                   : classes.navItemIcon
               }
             />
-          ) : (
-            <ExpandMore
+            <ListItemText
+              primary={"1-Blog Title"}
               className={
-                "/app/blogTitle" === location.pathname ||
-                "/app/blogOutline" === location.pathname
+                location.pathname === "/app/blogTitle"
+                  ? classes.listItemTextActive
+                  : classes.listItemText
+              }
+            />
+          </ListItem>
+        </Link>
+        <Link to="/app/blogOutline" className={classes.link}>
+          <ListItem
+            onClick={handleDrawerToggle}
+            button
+            className={
+              location.pathname === "/app/blogOutline"
+                ? classes.listItemActive
+                : classes.listItem
+            }
+          >
+            <MdGrading
+              style={{ fontSize: 20 }}
+              className={
+                location.pathname === "/app/blogOutline"
                   ? classes.navItemIconActive
                   : classes.navItemIcon
               }
             />
-          )}
-        </ListItem>
-        <Collapse in={openDropdown} timeout="auto" unmountOnExit>
-          <Link to="/app/blogTitle" className={classes.link}>
-            <ListItem
-              selected={"/app/blogTitle" === location.pathname}
-              button
-              className={classes.listItem}
-              onClick={() => {
-                handleClick();
-                handleDrawerToggle();
-              }}
-            >
-              <ListItemText primary={"Blog Title"} className={classes.nested} />
-            </ListItem>
-          </Link>
-          <Link to="/app/blogOutline" className={classes.link}>
-            <ListItem
-              selected={"/app/blogOutline" === location.pathname}
-              button
-              className={classes.listItem}
-              onClick={() => {
-                handleClick();
-                handleDrawerToggle();
-              }}
-            >
-              <ListItemText
-                primary={"Blog Outline"}
-                className={classes.nested}
-              />
-            </ListItem>
-          </Link>
-        </Collapse>
-        <Link to="/app/blogKeywords" className={classes.link}>
+            <ListItemText
+              primary={"2-Blog Outline"}
+              className={
+                location.pathname === "/app/blogOutline"
+                  ? classes.listItemTextActive
+                  : classes.listItemText
+              }
+            />
+          </ListItem>
+        </Link>
+
+        {/* <Link to="/app/blogKeywords" className={classes.link}>
           <ListItem
             onClick={handleDrawerToggle}
             button
@@ -344,7 +320,7 @@ function AppTemplate(props) {
               }
             />
           </ListItem>
-        </Link>
+        </Link> */}
 
         <Link to="/app/aiBlog" className={classes.link}>
           <ListItem
@@ -486,11 +462,11 @@ function AppTemplate(props) {
             />
           </ListItem>
         </Link>
-        <Link className={classes.link} to={"/app/invoices"}>
+        <Link className={classes.link} to={"/app/htmlCode"}>
           <ListItem
             onClick={handleDrawerToggle}
             className={
-              location.pathname === "/app/invoices"
+              location.pathname === "/app/htmlCode"
                 ? classes.listItemActive
                 : classes.listItem
             }
@@ -498,7 +474,7 @@ function AppTemplate(props) {
             <HTMLCodeIcon
               style={{ fontSize: 20 }}
               className={
-                location.pathname === "/app/invoices"
+                location.pathname === "/app/htmlCode"
                   ? classes.navItemIconActive
                   : classes.navItemIcon
               }
@@ -506,7 +482,7 @@ function AppTemplate(props) {
             <ListItemText
               primary={"8-HTML Code"}
               className={
-                location.pathname === "/app/invoices"
+                location.pathname === "/app/htmlCode"
                   ? classes.listItemTextActive
                   : classes.listItemText
               }

@@ -428,7 +428,11 @@ function AIBlog() {
           </TabPanel>
         </div>
       </div>
-      <PageFoot nextLink="/seoAnalyzer" backLink="/blogKeywords" pageNo="3" />
+      <PageFoot
+        nextLink="/app/imageCrawler"
+        backLink="/app/seoBlog"
+        pageNo="6"
+      />
     </div>
   );
 }

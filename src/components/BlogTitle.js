@@ -409,7 +409,12 @@ function BlogTitle() {
           </TabPanel>
         </div>
       </div>
-      <PageFoot nextLink="/seoAnalyzer" backLink="/blogKeywords" pageNo="1" />
+      <PageFoot
+        nextLink="/app/blogOutline"
+        backLink="/app/blogKeywords"
+        backDisabled={true}
+        pageNo="1.1"
+      />
     </div>
   );
 }

@@ -409,7 +409,7 @@ function BlogOutline() {
           </TabPanel>
         </div>
       </div>
-      <PageFoot nextLink="/seoAnalyzer" backLink="/blogKeywords" pageNo="1" />
+      <PageFoot nextLink="/app/aiBlog" backLink="/app/blogTitle" pageNo="1.2" />
     </div>
   );
 }

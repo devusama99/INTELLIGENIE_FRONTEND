@@ -507,10 +507,9 @@ function ImageCrawler() {
         </div>
       </div>
       <PageFoot
-        nextLink="/aiBLog"
-        backLink="/blogOutline"
-        pageNo="2"
-        backDisabled={true}
+        nextLink="/app/htmlCode"
+        backLink="/app/plagiarismChecker"
+        pageNo="7"
       />
     </div>
   );
