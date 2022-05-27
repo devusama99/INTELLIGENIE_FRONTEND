@@ -227,7 +227,9 @@ function ImageCrawler() {
 
     axios(config)
       .then(function (response) {
-        setfavimages(response.data);
+        console.log(response.data);
+        if (response.data !== "No Image Available.")
+          setfavimages(response.data);
       })
       .catch(function (error) {
         setSnackData({
@@ -460,7 +462,6 @@ function ImageCrawler() {
               }}
             >
               Favoruites
-              {console.log(favimages)}
             </h4>
             {!favimages.length > 0 ? (
               <h6 style={{ width: "100%", marginBottom: "30px" }}>
