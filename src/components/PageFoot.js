@@ -85,6 +85,7 @@ function PageFoot(props) {
           variant="contained"
           endIcon={<NextIcon className={classes.btnIcon} />}
           className={classes.btnFootNav}
+          disabled={props.nextDisabled}
         >
           Next
         </Button>

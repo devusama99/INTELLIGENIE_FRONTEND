@@ -10,6 +10,7 @@ import PlagiarismChecker from "./PlagiarismChecker";
 import ImageCrawler from "./ImageCrawler";
 import ImageEditor from "./ImageEditor";
 import Rephraser from "./Rephraser";
+import HTMLCode from "./HTMLCode";
 
 function MainApp() {
   return (
@@ -25,11 +26,8 @@ function MainApp() {
         exact
         component={PlagiarismChecker}
       />
-      <Route
-        path="/app/rephraser"
-        exact
-        component={Rephraser}
-      />
+      <Route path="/app/rephraser" exact component={Rephraser} />
+      <Route path="/app/htmlCode" exact component={HTMLCode} />
       <Route path="/app/imageCrawler" exact component={ImageCrawler} />
       <Route path="/app/imageEditor" exact component={ImageEditor} />
     </AppTemplate>
