@@ -8,6 +8,7 @@ import List from "@material-ui/core/List";
 import Menu from "@material-ui/core/Menu";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
+import {BsArrowRepeat} from "react-icons/bs"
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ListItem from "@material-ui/core/ListItem";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -434,6 +435,34 @@ function AppTemplate(props) {
             />
           </ListItem>
         </Link>
+        <Link className={classes.link} to={"/app/rephraser"}>
+          <ListItem
+            onClick={handleDrawerToggle}
+            button
+            className={
+              location.pathname === "/app/rephraser"
+                ? classes.listItemActive
+                : classes.listItem
+            }
+          >
+            <BsArrowRepeat
+              style={{ fontSize: 20 }}
+              className={
+                location.pathname === "/app/rephraser"
+                  ? classes.navItemIconActive
+                  : classes.navItemIcon
+              }
+            />
+            <ListItemText
+              primary={"7-Rephraser"}
+              className={
+                location.pathname === "/app/rephraser"
+                  ? classes.listItemTextActive
+                  : classes.listItemText
+              }
+            />
+          </ListItem>
+        </Link>
         <Link className={classes.link} to={"/app/imageCrawler"}>
           <ListItem
             onClick={handleDrawerToggle}
@@ -453,7 +482,7 @@ function AppTemplate(props) {
               }
             />
             <ListItemText
-              primary={"7-Image Crawler"}
+              primary={"8-Image Crawler"}
               className={
                 location.pathname === "/app/imageCrawler"
                   ? classes.listItemTextActive
@@ -480,7 +509,7 @@ function AppTemplate(props) {
               }
             />
             <ListItemText
-              primary={"8-HTML Code"}
+              primary={"9-HTML Code"}
               className={
                 location.pathname === "/app/htmlCode"
                   ? classes.listItemTextActive

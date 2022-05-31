@@ -509,7 +509,7 @@ function ImageCrawler() {
       <PageFoot
         nextLink="/app/htmlCode"
         backLink="/app/plagiarismChecker"
-        pageNo="7"
+        pageNo="8"
       />
     </div>
   );

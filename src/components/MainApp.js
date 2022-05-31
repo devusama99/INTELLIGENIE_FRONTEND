@@ -9,6 +9,7 @@ import SEOBlog from "./SEOBlog";
 import PlagiarismChecker from "./PlagiarismChecker";
 import ImageCrawler from "./ImageCrawler";
 import ImageEditor from "./ImageEditor";
+import Rephraser from "./Rephraser";
 
 function MainApp() {
   return (
@@ -23,6 +24,11 @@ function MainApp() {
         path="/app/plagiarismChecker"
         exact
         component={PlagiarismChecker}
+      />
+      <Route
+        path="/app/rephraser"
+        exact
+        component={Rephraser}
       />
       <Route path="/app/imageCrawler" exact component={ImageCrawler} />
       <Route path="/app/imageEditor" exact component={ImageEditor} />

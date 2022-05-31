@@ -174,7 +174,7 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function PlagiarismChecker() {
+function Rephraser() {
   const classes = useStyles();
 
   //   Tabs Methods
@@ -211,47 +211,20 @@ function PlagiarismChecker() {
     setDisable(true);
     setSnackData({ ...snackData, open: false });
     console.log(data);
-    const config = {
-      method: "POST",
-      url: "https://plagiarism-checker-and-auto-citation-generator-multi-lingual.p.rapidapi.com/plagiarism",
+    var config = {
+      method: "post",
+      url: `${PYTHON_BACKEND}/app/rephraser`,
       headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Host":
-          "plagiarism-checker-and-auto-citation-generator-multi-lingual.p.rapidapi.com",
-        "X-RapidAPI-Key": "db60fd54bamshee6955361247a3bp1c1ce5jsnadfe642a8566",
+        "Content-Type": "application/json",
       },
-      data: {
-        text: data.outlines,
-        language: "en",
-        includeCitations: false,
-        scrapeSources: false,
-      },
+      data: data.outlines.split("."),
     };
-    var content = data.outlines;
 
     axios(config)
       .then(function (response) {
         console.log(response.data);
-        setPercentage(response.data.percentPlagiarism);
-        response.data.sources.forEach((parent) => {
-          parent.matches.forEach((match) => {
-            if (match.matchText.charAt(match.matchText.length - 1 == ".")) {
-              content = content.replace(
-                " " + match.matchText.substring(0, match.matchText.length - 3),
-                `${" "}<span style="color:red">${match.matchText.substring(
-                  0,
-                  match.matchText.length - 3
-                )}</span>${" "}`
-              );
-            } else {
-              content = content.replace(
-                " " + match.matchText,
-                `${" "}<span style="color:red">${match.matchText}</span>${" "}`
-              );
-            }
-          });
-        });
-        setOutput(content);
+        
+        setOutput(response.data.data);
         setDisable(false);
         // setBlog(JSON.parse(response.data));
         // setBlogHistory([...blogHistory, JSON.parse(response.data)]);
@@ -274,7 +247,7 @@ function PlagiarismChecker() {
         message={snackData.message}
       />
 
-      <PageHead title={"Plagiarism Checker"} />
+      <PageHead title={"Rephraser"} />
       <div className={classes.container}>
         <div className={classes.inputForm}>
           <form
@@ -284,21 +257,6 @@ function PlagiarismChecker() {
               getBlog(data);
             })}
           >
-            <TextField
-              variant={"outlined"}
-              InputLabelProps={{ shrink: true }}
-              size={"medium"}
-              color={"primary"}
-              fullWidth
-              label={"Title"}
-              name="firstName"
-              className={[classes.textFeild, classes.formItem].join(" ")}
-              {...register("keywords", {
-                required: "Title required",
-              })}
-              error={Boolean(errors.keywords)}
-              helperText={errors.keywords?.message}
-            ></TextField>
             <TextField
               variant={"outlined"}
               InputLabelProps={{ shrink: true }}
@@ -382,38 +340,7 @@ function PlagiarismChecker() {
                       dangerouslySetInnerHTML={{ __html: output }}
                     ></Typography>
                   </Card>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <PieChart width={100} height={100}>
-                      <Pie
-                        data={[
-                          {
-                            name: "Plagarized",
-                            value: percentage,
-                            color: "red",
-                          },
-                          {
-                            name: "Not Plagarized",
-                            value: 100 - percentage,
-                            color: "#008080",
-                          },
-                        ]}
-                        nameKey={"name"}
-                        innerRadius={20}
-                      >
-                        {new Array(2).fill(null).map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index]} />
-                        ))}
-                      </Pie>
-                    </PieChart>
-                    <div>
-                      <Typography style={{ color: COLORS[0] }}>
-                        {percentage}% Plagarized
-                      </Typography>
-                      <Typography style={{ color: COLORS[1] }}>
-                        {100 - percentage}% Unique
-                      </Typography>
-                    </div>
-                  </div>
+                
                 </>
               ) : (
                 <Typography
@@ -429,11 +356,11 @@ function PlagiarismChecker() {
         </div>
       </div>
       <PageFoot
-        nextLink="/app/rephraser"
-        backLink="/app/seoBlog"
-        pageNo="6"
+        nextLink="/app/imageCrawler"
+        backLink="/app/plagiarismChecker"
+        pageNo="7"
       />
     </div>
   );
 }
-export default PlagiarismChecker;
+export default Rephraser;
