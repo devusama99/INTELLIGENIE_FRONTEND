@@ -197,6 +197,8 @@ function PlagiarismChecker() {
     reset,
   } = useForm();
 
+  const [sources, setSources] = useState([])
+
   const [output, setOutput] = useState("");
   const [blog, setBlog] = useState();
   const [blogHistory, setBlogHistory] = useState([]);
@@ -232,6 +234,7 @@ function PlagiarismChecker() {
     axios(config)
       .then(function (response) {
         console.log(response.data);
+        setSources(response.data.sources)
         setPercentage(response.data.percentPlagiarism);
         response.data.sources.forEach((parent) => {
           parent.matches.forEach((match) => {
@@ -284,21 +287,7 @@ function PlagiarismChecker() {
               getBlog(data);
             })}
           >
-            <TextField
-              variant={"outlined"}
-              InputLabelProps={{ shrink: true }}
-              size={"medium"}
-              color={"primary"}
-              fullWidth
-              label={"Title"}
-              name="firstName"
-              className={[classes.textFeild, classes.formItem].join(" ")}
-              {...register("keywords", {
-                required: "Title required",
-              })}
-              error={Boolean(errors.keywords)}
-              helperText={errors.keywords?.message}
-            ></TextField>
+           
             <TextField
               variant={"outlined"}
               InputLabelProps={{ shrink: true }}
@@ -414,6 +403,15 @@ function PlagiarismChecker() {
                       </Typography>
                     </div>
                   </div>
+                  <div>
+                    <ul>
+                      {console.log(sources)}
+                      {sources.length ? 
+                      sources.map(ele => <li><a href={ele.url} target="_blank">{ele.url}</a></li>)
+                       : null}
+                    </ul>
+                  </div>
+
                 </>
               ) : (
                 <Typography

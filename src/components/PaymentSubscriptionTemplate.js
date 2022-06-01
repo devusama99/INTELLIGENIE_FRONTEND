@@ -298,7 +298,7 @@ function PaymentSubscriptionTemplate(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Link to={"/app"}>
+          <Link to={"/app/blogTitle"}>
             <img src={Logo} alt="Logo" className={classes.Logo} />
           </Link>
           <div className={classes.settings}>

@@ -208,16 +208,18 @@ function Rephraser() {
 
   const COLORS = ["#D22B2B", "#028181"];
   function getBlog(data) {
+    const temp = data.outlines.split(".")
+    temp.splice(-1)
+    console.log(temp)
     setDisable(true);
     setSnackData({ ...snackData, open: false });
-    console.log(data);
     var config = {
       method: "post",
       url: `${PYTHON_BACKEND}/app/rephraser`,
       headers: {
         "Content-Type": "application/json",
       },
-      data: data.outlines.split("."),
+      data:{content: temp},
     };
 
     axios(config)
@@ -226,7 +228,7 @@ function Rephraser() {
         
         setOutput(response.data.data);
         setDisable(false);
-        // setBlog(JSON.parse(response.data));
+        setBlog(JSON.parse(response.data).data.join(". "));
         // setBlogHistory([...blogHistory, JSON.parse(response.data)]);
       })
       .catch(function (error) {
@@ -323,7 +325,8 @@ function Rephraser() {
           </Paper>
           <TabPanel value={value} index={0}>
             <div className={classes.cardsContainer}>
-              {output?.length ? (
+              {console.log(blog)}
+              {blog?.length ? (
                 <>
                   <Card className={classes.outputCard}>
                     <Typography
@@ -337,8 +340,10 @@ function Rephraser() {
                     <Typography
                       variant="body1"
                       gutterBottom
-                      dangerouslySetInnerHTML={{ __html: output }}
-                    ></Typography>
+                     
+                    >
+                      {blog}
+                    </Typography>
                   </Card>
                 
                 </>

@@ -220,11 +220,22 @@ function BlogTitle() {
       .then(function (response) {
         console.log(JSON.parse(response.data));
         setDisable(false);
-        setBlogTitle(JSON.parse(response.data).titles);
-        setBlogTitleHistory([
-          ...blogTitleHistory,
-          JSON.parse(response.data).titles,
-        ]);
+        if (typeof JSON.parse(response.data).titles == 'string'){
+          setBlogTitle(JSON.parse(response.data).titles.split('\n'));
+          console.log(JSON.parse(response.data).titles.split('\n'))
+          setBlogTitleHistory([
+            ...blogTitleHistory,
+            JSON.parse(response.data).titles.split("\n"),
+          ]);
+        } else {
+          setBlogTitle(JSON.parse(response.data).titles);
+        
+          setBlogTitleHistory([
+            ...blogTitleHistory,
+            JSON.parse(response.data).titles,
+          ]);
+        }
+       
       })
       .catch(function (error) {
         console.log(error);
@@ -413,7 +424,7 @@ function BlogTitle() {
         nextLink="/app/blogOutline"
         backLink="/app/blogKeywords"
         backDisabled={true}
-        pageNo="1.1"
+        pageNo="1"
       />
     </div>
   );

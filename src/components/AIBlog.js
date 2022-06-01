@@ -408,13 +408,13 @@ function AIBlog() {
                   ))}
 
                   <div className={classes.btnsContainer}>
-                    <div>
+                    {/* <div>
                       <CopyToClipboard text="item.data">
                         <IconButton className={classes.cardBtn}>
                           <ClipboardIcon />
                         </IconButton>
                       </CopyToClipboard>
-                    </div>
+                    </div> */}
                   </div>
                 </Card>
               ))

@@ -220,11 +220,21 @@ function BlogOutline() {
       .then(function (response) {
         console.log(JSON.parse(response.data));
         setDisable(false);
-        setBlogTitle(JSON.parse(response.data).outlines);
-        setBlogTitleHistory([
-          ...blogTitleHistory,
-          JSON.parse(response.data).outlines,
-        ]);
+        if (typeof JSON.parse(response.data).outlines == 'string'){
+          setBlogTitle(JSON.parse(response.data).outlines.split('\n'));
+          console.log(JSON.parse(response.data).outlines.split('\n'))
+          setBlogTitleHistory([
+            ...blogTitleHistory,
+            JSON.parse(response.data).outlines.split("\n"),
+          ]);
+        } else {
+          setBlogTitle(JSON.parse(response.data).outlines);
+        
+          setBlogTitleHistory([
+            ...blogTitleHistory,
+            JSON.parse(response.data).outlines,
+          ]);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -409,7 +419,7 @@ function BlogOutline() {
           </TabPanel>
         </div>
       </div>
-      <PageFoot nextLink="/app/aiBlog" backLink="/app/blogTitle" pageNo="1.2" />
+      <PageFoot nextLink="/app/aiBlog" backLink="/app/blogTitle" pageNo="2" />
     </div>
   );
 }

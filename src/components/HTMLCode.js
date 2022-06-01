@@ -221,7 +221,7 @@ function HTMLCode() {
     let y = [];
     newData.forEach((_, i) => {
       if (i % 2 == 0)
-        y.push({ outline: newData[i], paragraph: newData[i + 1] });
+        y.push({ outline: newData[i], paragraph: newData[i + 1].split('\n') });
     });
 
     const temp = {
@@ -231,19 +231,18 @@ function HTMLCode() {
     console.log(temp);
     var config = {
       method: "post",
-      url: `${PYTHON_BACKEND}/app/generateBlog`,
+      url: `${PYTHON_BACKEND}/app/HTMLCode`,
       headers: {
         "Content-Type": "application/json",
       },
-      data: temp,
+      data: JSON.stringify(temp)
     };
-
     axios(config)
       .then(function (response) {
-        console.log(JSON.parse(response.data));
+        console.log(JSON.stringify(response.data));
         setDisable(false);
-        setBlog(JSON.parse(response.data));
-        setBlogHistory([...blogHistory, JSON.parse(response.data)]);
+        setBlog(JSON.stringify(response.data));
+        // setBlogHistory([...blogHistory, JSON.parse(response.data)]);
       })
       .catch(function (error) {
         console.log(error);
@@ -519,6 +518,7 @@ function HTMLCode() {
           </Paper>
           <TabPanel value={value} index={0}>
             <div className={classes.cardsContainer}>
+              {console.log(blog)}
               {blog ? (
                 <Card className={classes.outputCard}>
                   <Typography
@@ -528,21 +528,21 @@ function HTMLCode() {
                   >
                     Just Now
                   </Typography>
-                  {console.log(typeof blog)}
-                  {blog.map((item) => (
-                    <>
+                 
+                 
+                   
                       <Typography
                         variant="h6"
                         gutterBottom
                         className={classes.cardResult}
                       >
-                        {item.outline}
+                      <ul style={{listStyle:"none", padding:'0 10px'}}>
+
+                        {(JSON.parse(blog).json_d).split("\n").map(ele => <li key={ele}>{ele}</li>)}
+                        </ul>
                       </Typography>
-                      <Typography variant="body2" gutterBottom>
-                        {item.data}
-                      </Typography>
-                    </>
-                  ))}
+                     
+                 
                 </Card>
               ) : (
                 <Typography

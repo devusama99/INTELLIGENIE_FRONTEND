@@ -259,7 +259,7 @@ function ProfileTemplate(props) {
             <ListItemText primary={"Manage Sub Users"} />
           </ListItem>
         </Link>
-        <Link className={classes.link} to={"/account/blogHistory"}>
+        {/* <Link className={classes.link} to={"/account/blogHistory"}>
           <ListItem
             onClick={handleDrawerToggle}
             button
@@ -279,10 +279,10 @@ function ProfileTemplate(props) {
             />
             <ListItemText primary={"Blog History"} />
           </ListItem>
-        </Link>
+        </Link> */}
       </List>
-      <Divider />
-      <List>
+      {/* <Divider /> */}
+      {/* <List>
         <ListItem className={classes.listItem}>
           <ListItemIcon>
             <OthersIcon
@@ -310,7 +310,7 @@ function ProfileTemplate(props) {
           </ListItemIcon>
           <ListItemText primary={"Trash"} />
         </ListItem>
-      </List>
+      </List> */}
     </div>
   );
 
@@ -331,7 +331,7 @@ function ProfileTemplate(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Link to={"/app"}>
+          <Link to={"/app/blogTitle"}>
             <img src={Logo} alt="Logo" className={classes.Logo} />
           </Link>
           <div className={classes.settings}>

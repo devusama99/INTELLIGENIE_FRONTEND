@@ -108,10 +108,10 @@ function Appbar() {
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             <Box className={classes.rightContainer}>
-              <Link to={"/"}>
+              <Link to={"/signIn"}>
                 <img src={Logo} alt="Logo" className={classes.Logo} />
               </Link>
-              <Button
+              {/* <Button
                 variant="text"
                 className={classes.navlink}
                 disableElevation
@@ -145,7 +145,7 @@ function Appbar() {
                 disableElevation
               >
                 FAQs
-              </Button>
+              </Button> */}
             </Box>
             <Box className={classes.leftContainer}>
               <Link to="signin" className={classes.link}>

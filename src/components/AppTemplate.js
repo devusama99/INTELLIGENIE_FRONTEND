@@ -208,7 +208,7 @@ function AppTemplate(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <Link to="/app" className={classes.link}>
+        {/* <Link to="/app" className={classes.link}>
           <ListItem
             onClick={handleDrawerToggle}
             button
@@ -235,7 +235,7 @@ function AppTemplate(props) {
               }
             />
           </ListItem>
-        </Link>
+        </Link> */}
 
         <Link to="/app/blogTitle" className={classes.link}>
           <ListItem
@@ -370,7 +370,7 @@ function AppTemplate(props) {
               }
             />
             <ListItemText
-              primary={"4-Analyzer"}
+              primary={"4-SEO Analyzer"}
               className={
                 location.pathname === "/app/seoAnalyzer"
                   ? classes.listItemTextActive
@@ -539,7 +539,7 @@ function AppTemplate(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Link to={"/app"}>
+          <Link to={"/app/blogTitle"}>
             <img src={Logo} alt="Logo" className={classes.Logo} />
           </Link>
           <div className={classes.settings}>

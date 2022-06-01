@@ -219,7 +219,7 @@ function SEOBlog() {
     console.log(value);
     var config = {
       method: "post",
-      url: `${PYTHON_BACKEND}/app/seoBlog`,
+      url: `${PYTHON_BACKEND}/app/checkSEOofContent`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -316,16 +316,16 @@ function SEOBlog() {
               size={"medium"}
               multiline
               color={"primary"}
-              label={"Outlines"}
+              label={"Content"}
               rows="10"
               className={[classes.textFeild, classes.formItem].join(" ")}
               name="lastName"
               {...register("outlines", {
-                required: "Outlines required",
-                pattern: {
-                  value: /^[a-zA-Z0-9,.? \n]*$/,
-                  message: "Invalid Outlines",
-                },
+                required: "Content required",
+                // pattern: {
+                //   value: /^[a-zA-Z0-9,.? \n]*$/,
+                //   message: "Invalid Outlines",
+                // },
               })}
               error={Boolean(errors.outlines)}
               helperText={errors.outlines?.message}
